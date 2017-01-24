@@ -13,24 +13,24 @@ public class CatController {
 
     private final CatRepository repository = new MockCatRepository();
 
-    @GetMapping("/cat/{name}")
+    @GetMapping("/cats/{name}")
     public CatProfile cats(@PathVariable String name) {
         return repository.get(name);
     }
 
-    @PutMapping("/cat/{name}")
+    @PutMapping("/cats/{name}")
     public void edit(@PathVariable String name, @RequestBody CatProfile updates) {
         CatProfile p = repository.get(name);
         p.getPatounes().addAll(updates.getPatounes());
         p.getGriffounes().addAll(updates.getGriffounes());
     }
 
-    @GetMapping("/cat/{name}/candidate")
+    @GetMapping("/cats/{name}/candidates")
     public List<CatCandidate> candidates(@PathVariable String name) {
         return repository.getCandidatesFor(name);
     }
 
-    @GetMapping("/cat/{name}/candidate/first")
+    @GetMapping("/cats/{name}/candidates/first")
     public CatCandidate nextCandidate(@PathVariable String name) {
         List<CatCandidate> candidates = repository.getCandidatesFor(name);
         if (candidates.isEmpty()) {
