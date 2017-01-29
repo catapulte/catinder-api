@@ -1,0 +1,12 @@
+language: java
+jdk:
+- oraclejdk8
+after_success:
+- mv build/libs/catinder-api-*.jar catinder-api.jar
+deploy:
+  provider: releases
+  api_key:
+    secure: V8EFrw7uDU7PGBl3xxn56c2lU8rymRw3He/PYivJ43I1rP+qclQV9TcYEcmjPh3MH21LE5edwFDv1dejekBJjDqgZfG2yDqiKkUuZoZT0vjqx1WPKML531cDZnP9Hem6PuDG+NmgiUZtq9iLOD4AoJLa6kU/+G8IXKHx5tic+EbMtmMVye5ymlm8o4JkjY4iwc3iSk0n/w0OqFjOImkXbu7G2t2MyIU0I8WL+33sZLyGMddHPfTbn8GGvQ7cRK/BJdwvhuF05uquQ5NMj/WDN1QsQeGDJLDD1lpxNQWOZ1Ov8V8F8XxyAKMNORrkg6nMQbRfEQ55iwcxKzUehi2/87HiYbfM+OYjg7c7fi4EwPkKwVl/gdh/2oiD6dOgKCdRShMq/sgW15aXe2X5+IypdwquNUi81jqoBNUKr7iG1+vdVQo/aMzexYn36MXFQEzqVdQ26FXi+GgBprps2v3JVFN8nQcM8AZ6R7Ar1waMC3hMKiSZiDHo9cqAQVIygSFyq1gVdZ9mrRvfLFECrOOCY6OrGyGcnUazY96I3w9LWBeuaVA8SVAcuY28J7gVnUPn9KfgqUrK10PQew/riacDJI+x3RDtV6hKQtBI/TZqqDCaQsOswJgAdZQ1aO/LHeIeJMjKz4PoWz69tOQ7xOvoMIE0Gav+fDeoCYMMeP4V3bA=
+  file: catinder-api.jar
+  on:
+    tags: true

@@ -12,7 +12,7 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 jar {
-    baseName = 'catinder-back'
+    baseName = 'catinder-api'
     version =  '0.1.0'
 }
 
