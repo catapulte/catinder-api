@@ -1,16 +1,25 @@
 package net.catapulte.catinder.model;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
+
+@Data
+@Document(collection = "cat")
 public class CatProfile {
 
+    @Id
+    private String id;
     private String name;
     private URL picture;
 
-    private List patounes = new ArrayList<>();
-    private List griffounes = new ArrayList<>();
+    private Set<String> candidates = new HashSet<>();
+    private Set<String> patounes = new HashSet<>();
+    private Set<String> griffounes = new HashSet<>();
 
     public CatProfile() {
     }
@@ -20,35 +29,13 @@ public class CatProfile {
         this.picture = picture;
     }
 
-    public String getName() {
-        return name;
+    public void patoune(String name) {
+        candidates.remove(name);
+        patounes.add(name);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public URL getPicture() {
-        return picture;
-    }
-
-    public void setPicture(URL picture) {
-        this.picture = picture;
-    }
-
-    public List getPatounes() {
-        return patounes;
-    }
-
-    public void setPatounes(List patounes) {
-        this.patounes = patounes;
-    }
-
-    public List getGriffounes() {
-        return griffounes;
-    }
-
-    public void setGriffounes(List griffounes) {
-        this.griffounes = griffounes;
+    public void griffoune(String name) {
+        candidates.remove(name);
+        griffounes.add(name);
     }
 }

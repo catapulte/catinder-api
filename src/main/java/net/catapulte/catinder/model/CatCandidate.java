@@ -1,7 +1,10 @@
 package net.catapulte.catinder.model;
 
+import lombok.Data;
+
 import java.net.URL;
 
+@Data
 public class CatCandidate {
 
     private String name;
@@ -9,22 +12,6 @@ public class CatCandidate {
 
     public CatCandidate(String name, URL picture) {
         this.name = name;
-        this.picture = picture;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public URL getPicture() {
-        return picture;
-    }
-
-    public void setPicture(URL picture) {
         this.picture = picture;
     }
 }
