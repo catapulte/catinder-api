@@ -15,27 +15,14 @@ public class CatProfile {
     @Id
     private String id;
     private String name;
-    private URL picture;
-
-    private Set<String> candidates = new HashSet<>();
-    private Set<String> patounes = new HashSet<>();
-    private Set<String> griffounes = new HashSet<>();
+    private String userId;
 
     public CatProfile() {
     }
 
-    public CatProfile(String name, URL picture) {
+    public CatProfile(String id, String name, String userId) {
+        this.id = id;
         this.name = name;
-        this.picture = picture;
-    }
-
-    public void patoune(String name) {
-        candidates.remove(name);
-        patounes.add(name);
-    }
-
-    public void griffoune(String name) {
-        candidates.remove(name);
-        griffounes.add(name);
+        this.userId = userId;
     }
 }

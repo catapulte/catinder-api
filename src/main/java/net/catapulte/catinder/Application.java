@@ -20,8 +20,8 @@ public class Application {
     @Bean
     public MongoDbFactory mongoDbFactory(@Value("${mongo.host:localhost}") String host,
                                          @Value("${mongo.port:27017}") int port,
-                                         @Value("${mongo.user:guest}") String user,
-                                         @Value("${mongo.pass:guest}") String pass) throws UnknownHostException {
+                                         @Value("${mongo.user:lolcat}") String user,
+                                         @Value("${mongo.pass:lolcat}") String pass) throws UnknownHostException {
         MongoClientURI uri = new MongoClientURI(String.format("mongodb://%s:%s@%s:%d/cat", user, pass, host, port));
         SimpleMongoDbFactory f = new SimpleMongoDbFactory(uri);
         return f;

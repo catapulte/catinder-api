@@ -1,7 +1,7 @@
 package net.catapulte.catinder.rest;
 
 import net.catapulte.catinder.model.CatProfile;
-import net.catapulte.catinder.repository.MongoCatRepository;
+import net.catapulte.catinder.repository.CatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +13,10 @@ import java.util.List;
 @RestController
 public class MockDataController {
 
-    private final MongoCatRepository repository;
+    private final CatRepository repository;
 
     @Autowired
-    public MockDataController(MongoCatRepository repository) {
+    public MockDataController(CatRepository repository) {
         this.repository = repository;
     }
 
@@ -47,14 +47,14 @@ public class MockDataController {
                 if (candidate.getId().equals(cat.getId())) {
                     candidate = cats.get((random + 1) % cats.size());
                 }
-                cat.getCandidates().add(candidate.getName());
-                candidate.getCandidates().add(cat.getName());
+//                cat.getCandidates().add(candidate.getName());
+//                candidate.getCandidates().add(cat.getName());
             }
         });
         cats.forEach(repository::save);
     }
 
     private void cat(String name, String picture) throws MalformedURLException {
-        repository.save(new CatProfile(name, new URL(picture)));
+        //repository.save(new CatProfile(name, new URL(picture)));
     }
 }
